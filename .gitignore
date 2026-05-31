@@ -1,0 +1,8 @@
+# Large binary files that don't need version control
+*.psd
+*.ai
+
+# System files
+Thumbs.db
+Desktop.ini
+.DS_Store

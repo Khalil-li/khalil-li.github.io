@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linxuan Li — IET, CAS</title>
+    <style>
+        :root {
+            --fg: #111;
+            --fg-mid: #444;
+            --fg-light: #777;
+            --bg: #fff;
+            --accent: #8b3a4b;
+            --accent-visited: #6b2d3b;
+            --rule: #ccc;
+            --max-w: 780px;
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{font-size:17px;-webkit-text-size-adjust:100%}
+        body{
+            font-family: "Charter", "Georgia", "Times New Roman", "Noto Serif SC", serif;
+            color:var(--fg);background:var(--bg);
+            max-width:var(--max-w);margin:0 auto;padding:0 24px 60px;
+            line-height:1.6;
+            border-top:4px solid var(--accent);
+        }
+
+        /* ---- nav ---- */
+        nav{
+            display:flex;align-items:baseline;gap:24px;
+            padding:28px 0 10px;
+            border-bottom:1px solid var(--rule);
+            margin-bottom:36px;
+        }
+        nav .name{
+            font-size:1.15rem;font-weight:700;color:var(--accent);
+            margin-right:auto;
+        }
+        nav a{
+            text-decoration:none;color:var(--fg-light);font-size:0.95rem;
+            padding-bottom:2px;
+        }
+        nav a:hover,nav a.active{color:var(--fg);border-bottom:2px solid var(--accent);}
+
+        /* ---- layout ---- */
+        .home-grid{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:start}
+        @media(max-width:640px){.home-grid{grid-template-columns:1fr;gap:24px}.home-grid .photo{max-width:180px;margin:0 auto}}
+
+        /* ---- photo ---- */
+        .photo{text-align:center}
+        .photo img{
+            width:100%;max-width:220px;aspect-ratio:3/4;object-fit:cover;
+            display:block;margin:0 auto;
+            border-radius:4px;
+            box-shadow:0 1px 4px rgba(0,0,0,0.08);
+        }
+        .photo .placeholder{
+            width:220px;aspect-ratio:3/4;background:#f0f0f0;display:flex;
+            align-items:center;justify-content:center;color:#bbb;font-size:2.5rem;
+            margin:0 auto;border-radius:4px;
+        }
+        .photo .caption{font-size:0.78rem;color:var(--fg-light);margin-top:8px;text-align:center}
+
+        /* ---- typography ---- */
+        h1{font-size:1.9rem;font-weight:700;margin-bottom:6px;letter-spacing:-0.3px}
+        h2{font-size:1rem;font-weight:700;margin:24px 0 6px;color:var(--fg);text-transform:uppercase;letter-spacing:0.6px}
+        h3{font-size:0.95rem;font-weight:700;margin:20px 0 4px;color:var(--fg-mid)}
+        p,li{font-size:0.95rem;color:var(--fg-mid);margin-bottom:6px}
+        .affil{font-size:0.88rem;color:var(--fg-light);margin-bottom:20px;line-height:1.5}
+        .affil + p{text-align:justify;text-justify:inter-word}
+        a{color:var(--accent);text-decoration:none}
+        a:hover{text-decoration:underline}
+        a:visited{color:var(--accent-visited)}
+        hr{border:none;border-top:1px solid var(--rule);margin:24px 0}
+
+        /* ---- research interests list ---- */
+        .interests{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;margin-top:4px}
+        .interests li{font-size:0.88rem;color:var(--fg-mid);padding:5px 0 5px 16px;position:relative}
+        .interests li::before{content:'';position:absolute;left:0;top:12px;width:6px;height:6px;background:var(--accent);border-radius:1px}
+        @media(max-width:500px){.interests{grid-template-columns:1fr}}
+
+        /* ---- pub list ---- */
+        .pub{margin-bottom:12px;font-size:0.9rem;padding-bottom:8px;border-bottom:1px solid #f2f2f2;text-align:justify}
+        .pub:last-child{border-bottom:none}
+        .pub .idx{color:var(--fg-light);font-size:0.8rem}
+        .pub .title{font-weight:700;color:var(--fg)}
+        .pub .authors{color:var(--fg-mid)}
+        .pub .authors .me{font-weight:700;color:var(--fg)}
+        .pub .meta{color:var(--fg-light);font-size:0.84rem;margin-top:2px}
+        .pub .meta a{margin-left:8px;font-size:0.82rem;font-weight:600}
+        .pub .note{color:#b85c00;font-weight:600;font-size:0.82rem}
+
+        /* ---- footer ---- */
+        footer{
+            margin-top:40px;padding-top:18px;border-top:1px solid var(--rule);
+            color:var(--fg-light);font-size:0.84rem;text-align:center;
+        }
+        footer a{margin:0 10px}
+
+        /* ---- misc ---- */
+        .section{display:none}
+        .section.active{display:block}
+        sup{font-size:0.72rem;color:var(--fg-light)}
+    </style>
+</head>
+<body>
+
+<!-- ================================================================ -->
+<!-- NAV -->
+<nav>
+    <span class="name">Linxuan Li</span>
+    <a href="#home" class="active" data-nav="home">Home</a>
+    <a href="#publications" data-nav="publications">Publications</a>
+    <a href="#research" data-nav="research">Research</a>
+</nav>
+
+<!-- ================================================================ -->
+<!-- HOME -->
+<section id="home" class="section active">
+<div class="home-grid">
+    <div class="photo">
+        <img src="photo.jpg" alt="Linxuan Li">
+    </div>
+
+    <div>
+        <h1>Linxuan Li &nbsp;<span style="font-weight:400;color:var(--fg-light)">李林宣</span></h1>
+        <p class="affil">
+            Ph.D. Candidate<br>
+            Institute of Engineering Thermophysics, Chinese Academy of Sciences<br>
+            Supervisor: Prof. Qiangqiang Ren
+        </p>
+
+        <p>
+            Welcome! I am a Ph.D. candidate at the Institute of Engineering Thermophysics,
+            Chinese Academy of Sciences (IET, CAS) in Beijing, working under the supervision
+            of Prof. Qiangqiang Ren. I conduct my research within the
+            <a href="http://www.etp.ac.cn/org/ky/202109/t20210917_6204442.html" target="_blank">Circulating Fluidized Bed Laboratory</a>
+            and the
+            <a href="https://sklcc.sxicc.ac.cn/" target="_blank">State Key Laboratory of Clean and Efficient Coal Utilization</a>.
+            My work centers on clean and low-carbon coal combustion, the migration and
+            transformation of alkali and alkaline earth metals (AAEMs) in thermal processes,
+            low-carbon utilization of high-carbon energy, and thermal treatment of solid waste.
+            If you are interested in potential collaborations or have questions about my work,
+            please feel free to reach out.
+        </p>
+
+        <h2>Research Interests</h2>
+        <ul class="interests">
+            <li>Clean &amp; low-carbon coal combustion</li>
+            <li>AAEMs migration &amp; transformation</li>
+            <li>High-carbon energy low-carbon utilization</li>
+            <li>Solid waste thermal treatment</li>
+        </ul>
+    </div>
+</div>
+</section>
+
+<!-- ================================================================ -->
+<!-- PUBLICATIONS -->
+<section id="publications" class="section">
+
+<h1>Publications</h1>
+
+<!-- ---------- First / Corresponding Author ---------- -->
+<h2>First / Corresponding Author</h2>
+<p style="font-size:0.82rem;color:var(--fg-light);margin-bottom:12px">† corresponding author &nbsp;|&nbsp; Listed in reverse chronological order</p>
+
+<!-- [6] -->
+<div class="pub">
+    <span class="idx">[6]</span>
+    <span class="title">A Purification-Combustion Liquid Slag-Tapping Method for High-Alkali Coal: Synergistic Capture of AAEMs and Ultra-Low-NO<sub>x</sub> Combustion.</span>
+    <div class="authors">Shaobo Yang, <span class="me">Linxuan Li*</span>, Shaobo Han, et al.</div>
+    <div class="meta">
+        <em>Fuel</em>, 2026, 426: 139487.
+        <a href="#">[DOI]</a><a href="#">[PDF]</a>
+    </div>
+</div>
+
+<!-- [5] -->
+<div class="pub">
+    <span class="idx">[5]</span>
+    <span class="title">高碱煤纯烧的灰化学问题及高效燃烧研究进展. <span style="font-weight:400;color:var(--fg-light)">[Ash chemistry issues and efficient combustion research progress of high-alkali coal direct combustion.]</span></span>
+    <div class="authors"><span class="me">李林宣</span> (Linxuan Li), 任强强*, 杨少波, et al.</div>
+    <div class="meta">
+        <em>煤炭学报 (Journal of China Coal Society)</em>, 2024, 49(10): 4088–4116.
+        <a href="#">[DOI]</a><a href="#">[PDF]</a>
+    </div>
+</div>
+
+<!-- [4] -->
+<div class="pub">
+    <span class="idx">[4]</span>
+    <span class="title">Continuous Operation and Slagging Control Mechanism of High-Alkali Coal Liquid Slagging Purification-Combustion at Low Load Conditions.</span>
+    <div class="authors"><span class="me">Linxuan Li</span>, Shaobo Yang, et al.</div>
+    <div class="meta">
+        <em>Applied Thermal Engineering</em>, 2026, 300: 131544.
+        <a href="#">[DOI]</a><a href="#">[PDF]</a>
+    </div>
+</div>
+
+<!-- [3] -->
+<div class="pub">
+    <span class="idx">[3]</span>
+    <span class="title">Purification of high alkali coal: Insights into syngas production and nitrogen conversion mechanism.</span>
+    <div class="authors"><span class="me">Linxuan Li</span>, Qiangqiang Ren*, Shaobo Yang, et al.</div>
+    <div class="meta">
+        <em>Fuel</em>, 2026, 406: 137005.
+        <a href="#">[DOI]</a><a href="#">[PDF]</a>
+    </div>
+</div>
+
+<!-- [2] -->
+<div class="pub">
+    <span class="idx">[2]</span>
+    <span class="title">Experimental study on the evolution of inorganic composition during purification of high-alkali coal at different temperatures.</span>
+    <div class="authors"><span class="me">Linxuan Li</span>, Qiangqiang Ren*, Shaobo Yang, et al.</div>
+    <div class="meta">
+        <em>Fuel</em>, 2025, 398: 135540.
+        <a href="#">[DOI]</a><a href="#">[PDF]</a>
+    </div>
+</div>
+
+<!-- [1] -->
+<div class="pub">
+    <span class="idx">[1]</span>
+    <span class="title">Influence of ash composition on slag properties and network structure in coal gasification fine slag: A high-temperature melting perspective.</span>
+    <div class="authors"><span class="me">Linxuan Li</span>, Li Zhou, Qiangqiang Ren*, et al.</div>
+    <div class="meta">
+        <em>Energy</em>, 2025: 136816.
+        <a href="#">[DOI]</a><a href="#">[PDF]</a>
+    </div>
+</div>
+
+<!-- ---------- Conference ---------- -->
+<h2>Conference Papers</h2>
+
+<div class="pub">
+    <span class="idx">[C3]</span>
+    <span class="title">Study on the Mechanism of High-Alkali Coal Purification-Combustion and Ash Evolution under Variable Atmospheres.</span>
+    <div class="authors"><span class="me">Linxuan Li</span>, Shaobo Han, Shaobo Yang*, Qiangqiang Ren*.</div>
+    <div class="meta">
+        The 41st International Symposium on Combustion (ISOC2026), 2026.
+        <span class="note">Accept — Top conference in combustion</span>
+    </div>
+</div>
+
+<div class="pub">
+    <span class="idx">[C2]</span>
+    <span class="title">Purification Reaction and Nitrogen Conversion Mechanism of High Alkali Coal.</span>
+    <div class="authors"><span class="me">Linxuan Li</span>, Shaobo Yang, Qiangqiang Ren*, et al.</div>
+    <div class="meta">
+        The 25th International Conference on Fluidized Bed Conversion (FBC 25), 2025.
+        <span class="note">Accept (Oral)</span>
+    </div>
+</div>
+
+<div class="pub">
+    <span class="idx">[C1]</span>
+    <span class="title">Exploring the mechanism of liquid slag removal in high-alkali coal purification-combustion: Focusing on the dynamic evolution of slagging, fouling, and ash accumulation behavior.</span>
+    <div class="authors"><span class="me">Linxuan Li</span>, Shaobo Yang, et al.</div>
+    <div class="meta">
+        International Workshop on Thermal Conversion for Carbon Neutrality (3rd WTCCN), 2025.
+        <span class="note">Accept (Oral)</span>
+    </div>
+</div>
+
+<!-- ---------- Co-authored ---------- -->
+<h2>Co-authored Publications <sup>(selected)</sup></h2>
+
+<div class="pub">
+    <span class="idx">[10]</span> Shaobo Han, <span class="me">Linxuan Li</span>, Ruifang Cui, et al.
+    Study on low-nitrogen combustion of lignite under wide load by purification-combustion.
+    <span class="meta"><em>Fuel</em>, 424: 139303, 2026. <a href="#">[DOI]</a></span>
+</div>
+<div class="pub">
+    <span class="idx">[9]</span> Qinglin Gong, Yingjie Wang, Xuezhen Qin, <span class="me">Linxuan Li</span>, et al.
+    Experimental study on oxygen-enriched combustion and agglomeration characteristics of high-blending-ratio biomass/coal blends.
+    <span class="meta"><em>Journal of the Energy Institute</em>, 2026: 102531. <a href="#">[DOI]</a></span>
+</div>
+<div class="pub">
+    <span class="idx">[8]</span> Ruifang Cui, Shaobo Yang, Qiangqiang Ren*, <span class="me">Linxuan Li</span>, et al.
+    Experimental study on material transformation and energy utilization in the high temperature purification of coal.
+    <span class="meta"><em>Journal of Cleaner Production</em>, 2026, 552: 147962. <a href="#">[DOI]</a></span>
+</div>
+<div class="pub">
+    <span class="idx">[7]</span> Shaobo Yang, Shaobo Han, Ruifang Cui, <span class="me">Linxuan Li</span>, et al.
+    A novel coal purification-combustion technology: purification characteristics and ultra-low nitrogen combustion at low load.
+    <span class="meta"><em>Engineering</em>, 2025, 59: 178196. <a href="#">[DOI]</a></span>
+</div>
+<div class="pub">
+    <span class="idx">[6]</span> Ruifang Cui, Li Zhou, Qiangqiang Ren*, <span class="me">Linxuan Li</span>, et al.
+    Optimizing porous glass-ceramics fabricated from coal gasification fine slag: Effects of ash composition on structure and properties.
+    <span class="meta"><em>Construction and Building Materials</em>, 2025, 470: 140560. <a href="#">[DOI]</a></span>
+</div>
+<div class="pub">
+    <span class="idx">[5]</span> Shaobo Han, Shaobo Yang, Qiangqiang Ren*, <span class="me">Linxuan Li</span>, et al.
+    Purification-Combustion system: Purification and Combustion characteristics at Different Air Distribution Conditions.
+    <span class="meta"><em>Fuel</em>, 2026, 406: 131169. <a href="#">[DOI]</a></span>
+</div>
+<div class="pub">
+    <span class="idx">[4]</span> Shaobo Yang, Qiangqiang Ren*, Shaobo Han, Ruifang Cui, Yujie Hu, Yuqian Heng, Shilong Dong, <span class="me">Linxuan Li</span>, et al.
+    Coal gasification-combustion system − Part I: Principle and nitrogen migration characteristics.
+    <span class="meta"><em>Fuel</em>, 2025, 398: 135527. <a href="#">[DOI]</a></span>
+</div>
+<div class="pub">
+    <span class="idx">[3]</span> Shilong Dong, Wei Li, Shaobo Yang, Chen Liang, Qiangqiang Ren, Mengyin Gong, Yuqian Heng, <span class="me">Linxuan Li</span>.
+    Experimental study on coal gasification characteristics during CO<sub>2</sub>/O<sub>2</sub> atmosphere with two-stage system.
+    <span class="meta"><em>Journal of the Energy Institute</em>, 2025, 122, 102208. <a href="#">[DOI]</a></span>
+</div>
+<div class="pub">
+    <span class="idx">[2]</span> 周丽, 任强强, 崔瑞芳, <span class="me">李林宣</span> et al.
+    煤气化细灰熔渣制备泡沫微晶玻璃. <span style="color:var(--fg-light)">[Preparation of foam glass-ceramics from coal gasification fine ash slag.]</span>
+    <span class="meta"><em>洁净煤技术 (Clean Coal Technology)</em>, 2024, 30(07): 69–77. <a href="#">[DOI]</a></span>
+</div>
+<div class="pub">
+    <span class="idx">[1]</span> 张驰, 任强强, 韩绍博, 胡玉洁, 崔瑞芳, <span class="me">李林宣</span> et al.
+    面向双碳目标的煤粉纯化-燃烧：纯化反应N转化. <span style="color:var(--fg-light)">[Coal purification-combustion towards carbon peaking and neutrality goals: N conversion in purification reaction.]</span>
+    <span class="meta"><em>洁净煤技术 (Clean Coal Technology)</em>, 2025, 31(02): 190–197. <a href="#">[DOI]</a></span>
+</div>
+
+</section>
+
+<!-- ================================================================ -->
+<!-- RESEARCH -->
+<section id="research" class="section">
+
+<h1>Research</h1>
+
+<p style="font-size:0.9rem;color:var(--fg-light);margin-bottom:24px">
+    My research aims to enable cleaner utilization of high-carbon fuels through fundamental understanding
+    of ash chemistry, alkali metal behavior, and combustion pollutant control. Below is an overview of the
+    directions I work on — written for a broader scientific audience.
+</p>
+
+<h2>Clean &amp; Low-Carbon Coal Combustion</h2>
+<p>
+    Coal remains a cornerstone of global energy supply, yet its combustion poses significant environmental
+    challenges. My work addresses this through <strong>purification-combustion technology</strong> for
+    high-alkali coal — a particularly problematic feedstock. By decoupling the purification (gasification)
+    stage from the combustion stage, we can separately control inorganic mineral evolution, alkali metal
+    release, and nitrogen oxide formation. This integrated approach achieves ultra-low NO<sub>x</sub>
+    emissions while avoiding the ash-related operational issues (slagging, fouling) that have historically
+    prevented direct combustion of high-alkali coals.
+</p>
+
+<h2>AAEMs Migration &amp; Transformation</h2>
+<p>
+    Alkali and alkaline earth metals (AAEMs — principally Na, K, Ca, Mg) in coal are the root cause of
+    ash deposition, slagging, and fouling in utility boilers. I study how these elements migrate between
+    the gas and condensed phases during thermal treatment under varying atmospheres (O<sub>2</sub>,
+    CO<sub>2</sub>, H<sub>2</sub>O) and temperatures. The goal is to develop predictive models for
+    AAEM release, capture, and deposition, and to design operating windows where liquid slag tapping
+    simultaneously removes AAEMs — turning a liability into a controllable separation process.
+</p>
+
+<h2>Low-Carbon Utilization of High-Carbon Energy</h2>
+<p>
+    Achieving carbon neutrality in the power and industrial sectors requires not just fuel switching but
+    smarter utilization of existing carbon-intensive resources. I investigate the nitrogen migration
+    pathways (fuel-N → NH<sub>3</sub>/HCN → NO<sub>x</sub>/N<sub>2</sub>) in staged
+    purification-combustion systems, aiming to maximize the conversion of fuel-bound nitrogen to harmless
+    N<sub>2</sub> rather than NO<sub>x</sub>. This chemistry-first approach to low-NO<sub>x</sub>
+    combustion is especially relevant for wide-load operation where conventional de-NO<sub>x</sub>
+    technologies lose effectiveness.
+</p>
+
+<h2>Solid Waste Thermal Treatment</h2>
+<p>
+    Industrial solid wastes such as coal gasification fine slag and biomass ash represent both an
+    environmental burden and an underutilized resource. I explore high-temperature treatment routes
+    that convert these wastes into value-added materials — for example, foam glass-ceramics from
+    gasification slag. Understanding the relationship between ash composition, melting behavior,
+    and final material properties is central to designing robust valorization pathways.
+</p>
+
+</section>
+
+<!-- ================================================================ -->
+<!-- FOOTER -->
+<footer>
+    <p>
+        <a href="mailto:lilinxuan@iet.cn">lilinxuan@iet.cn</a>
+        <a href="https://scholar.google.com.hk/citations?hl=zh-CN&pli=1&user=opyHGJQAAAAJ">Google Scholar</a>
+        <a href="https://orcid.org/0009-0006-6709-1922">ORCID</a>
+        <a href="https://www.researchgate.net/profile/Lin-Xuan-Li-2?ev=hdr_xprf">ResearchGate</a>
+    </p>
+    <p style="margin-top:8px">Linxuan Li · IET, CAS · 2026</p>
+</footer>
+
+<!-- ================================================================ -->
+<script>
+const navs = document.querySelectorAll('[data-nav]');
+const secs = document.querySelectorAll('.section');
+
+navs.forEach(a => {
+    a.addEventListener('click', e => {
+        e.preventDefault();
+        const id = a.dataset.nav;
+        navs.forEach(n => n.classList.remove('active'));
+        a.classList.add('active');
+        secs.forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo({top:0,behavior:'smooth'});
+        history.pushState(null,null,'#'+id);
+    });
+});
+
+// hash on load
+const h = window.location.hash.replace('#','');
+if(h && document.getElementById(h)) {
+    document.querySelector(`[data-nav="${h}"]`)?.click();
+}
+</script>
+
+</body>
+</html>
