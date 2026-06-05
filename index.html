@@ -374,7 +374,10 @@
         <a href="https://orcid.org/0009-0006-6709-1922">ORCID</a>
         <a href="https://www.researchgate.net/profile/Lin-Xuan-Li-2?ev=hdr_xprf">ResearchGate</a>
     </p>
-    <p style="margin-top:8px">Linxuan Li · IET, CAS · 2026</p>
+    <p style="margin-top:8px">
+        Linxuan Li · IET, CAS · 2026 ·
+        <span id="page-views" data-goatcounter-skip>Views: ...</span>
+    </p>
 </footer>
 
 <!-- ================================================================ -->
@@ -400,7 +403,24 @@ const h = window.location.hash.replace('#','');
 if(h && document.getElementById(h)) {
     document.querySelector(`[data-nav="${h}"]`)?.click();
 }
+
+// Page view counter (GoatCounter)
+(function() {
+    var el = document.getElementById('page-views');
+    if (!el) return;
+    var t = setInterval(function() {
+        if (window.goatcounter && window.goatcounter.visit_count) {
+            clearInterval(t);
+            window.goatcounter.visit_count({append: '#page-views'});
+        }
+    }, 100);
+    // Fallback: if GoatCounter doesn't load within 5s, hide the counter
+    setTimeout(function() { clearInterval(t); }, 5000);
+})();
 </script>
 
+<!-- GoatCounter page view tracking -->
+<script data-goatcounter="https://YOURCODE.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
